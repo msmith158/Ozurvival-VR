@@ -8,16 +8,33 @@ public class CraftingSystem : MonoBehaviour
 {
     [SerializeField] private GameObject object1;
     [SerializeField] private GameObject object2;
-    [SerializeField] private Rigidbody resultPrefab;
+    [SerializeField] private Rigidbody axePrefab;
+    [SerializeField] private Rigidbody campfirePrefab;
+    private bool isActivated;
+
+    private void Start()
+    {
+        object1 = gameObject;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Stone"))
+        switch (other.gameObject.tag)
         {
-            Rigidbody prefabInstance;
-            prefabInstance = Instantiate(resultPrefab, this.transform.position, this.transform.rotation);
-            object2.SetActive(false);
-            object1.SetActive(false);
+            case "Stone":
+                object2 = other.gameObject;
+                Rigidbody axePrefabInstance;
+                axePrefabInstance = Instantiate(axePrefab, transform.position, transform.rotation);
+                Destroy(object2);
+                Destroy(object1);
+                break;
+            case "Log":
+                object2 = other.gameObject;
+                Rigidbody campfirePrefabInstance;
+                campfirePrefabInstance = Instantiate(campfirePrefab, transform.position, transform.rotation);
+                Destroy(object2);
+                Destroy(object1);
+                break;
         }
     }
 }
