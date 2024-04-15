@@ -10,7 +10,6 @@ public class CraftingSystem : MonoBehaviour
     [SerializeField] private GameObject object2;
     [SerializeField] private Rigidbody axePrefab;
     [SerializeField] private Rigidbody campfirePrefab;
-    private bool isActivated;
 
     private void Start()
     {
@@ -19,21 +18,35 @@ public class CraftingSystem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        switch (other.gameObject.tag)
+        switch (object1.tag)
         {
-            case "Stone":
-                object2 = other.gameObject;
-                Rigidbody axePrefabInstance;
-                axePrefabInstance = Instantiate(axePrefab, transform.position, transform.rotation);
-                Destroy(object2);
-                Destroy(object1);
+            case "Stick":
+                switch (other.gameObject.tag)
+                {
+                    // Crafting an axe
+                    case "Stone":
+                        object2 = other.gameObject;
+                        Rigidbody axePrefabInstance;
+                        axePrefabInstance = Instantiate(axePrefab, transform.position, transform.rotation);
+                        Destroy(object2);
+                        Destroy(object1);
+                        break;
+                    // Crafting a campfire [SCRAPPED]
+                    /*case "Log":
+                        object2 = other.gameObject;
+                        Rigidbody campfirePrefabInstance;
+                        campfirePrefabInstance = Instantiate(campfirePrefab, transform.position, transform.rotation);
+                        Destroy(object2);
+                        Destroy(object1);
+                        break;*/
+                }
                 break;
             case "Log":
-                object2 = other.gameObject;
-                Rigidbody campfirePrefabInstance;
-                campfirePrefabInstance = Instantiate(campfirePrefab, transform.position, transform.rotation);
-                Destroy(object2);
-                Destroy(object1);
+                switch (other.gameObject.tag)
+                {
+                    case "Log":
+                        break;
+                }
                 break;
         }
     }
