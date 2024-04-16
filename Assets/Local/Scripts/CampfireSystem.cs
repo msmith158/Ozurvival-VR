@@ -56,8 +56,14 @@ public class CampfireSystem : MonoBehaviour
                 switch (other.gameObject.tag)
                 {
                     case "Lighter":
-                        campfireParticles.SetActive(true);
-                        object1.tag = "CampfireLit";
+                        switch (other.gameObject.transform.GetChild(0).gameObject.activeSelf)
+                        {
+                            case true:
+                                Debug.Log(other.gameObject.transform.GetChild(0).gameObject);
+                                campfireParticles.SetActive(true);
+                                object1.tag = "CampfireLit";
+                                break;
+                        }
                         break;
                 }
                 break;

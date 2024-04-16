@@ -20,7 +20,17 @@ public class Lighter : MonoBehaviour
             switch (lighterParticles.activeSelf)
             {
                 case false:
+                    lighterParticles.SetActive(true);
                     Debug.Log("Hello - " + button);
+                    break;
+            }
+        }
+        if (!pressed)
+        {
+            switch (lighterParticles.activeSelf)
+            {
+                case true:
+                    lighterParticles.SetActive(false);
                     break;
             }
         }
