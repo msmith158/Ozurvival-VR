@@ -7,6 +7,15 @@ TagManager:
   - Stone
   - Stick
   - Log
+  - Firewood
+  - CampfireBase
+  - CampfireHalf
+  - Campfire
+  - Leaves
+  - Lighter
+  - CampfireLit
+  - FishUncooked
+  - FishCooked
   layers:
   - Default
   - TransparentFX

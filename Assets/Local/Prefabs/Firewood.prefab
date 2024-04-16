@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4242247989633800695}
   - component: {fileID: 8299347806157760483}
   - component: {fileID: 4170947004263840811}
+  - component: {fileID: 4152793003762994107}
   m_Layer: 0
   m_Name: Firewood
-  m_TagString: Untagged
+  m_TagString: Firewood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,6 +85,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4152793003762994107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3885170900697665472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bba9f86228d8b440a2459e0fbfef8b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  object1: {fileID: 0}
+  object2: {fileID: 0}
+  axePrefab: {fileID: 4279188438752914462, guid: 3d9976771a70fdb428f9d22363a55248, type: 3}
+  campfirePrefab: {fileID: 714295807173471838, guid: 860f38b8935df9b418392f55024ee9ac, type: 3}
 --- !u!1001 &6703098956976630120
 PrefabInstance:
   m_ObjectHideFlags: 0
