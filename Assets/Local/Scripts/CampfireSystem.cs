@@ -18,7 +18,8 @@ public class CampfireSystem : MonoBehaviour
     [SerializeField, Range(0.1f, 3f)] private float cookSpeed;
     [SerializeField] private Material fishCookingMaterial;
     [SerializeField] private Color startColor, endColor;
-    float startTime;
+    private float startTime;
+    private bool isOccupied = false;
 
     private void OnEnable()
     {
@@ -71,13 +72,19 @@ public class CampfireSystem : MonoBehaviour
                 switch (other.gameObject.tag)
                 {
                     case "FishUncooked":
-                        object2 = other.gameObject;
-                        object2.transform.parent = cookPoint.transform;
-                        object2.transform.position = cookPoint.transform.position;
-                        object2.transform.rotation = cookPoint.transform.rotation;
-                        object2.GetComponent<Rigidbody>().isKinematic = true;
-                        object2.GetComponent<XRGrabInteractable>().enabled = false;
-                        StartCoroutine(FishCook(object2.GetComponent<MeshRenderer>()));
+                        switch (isOccupied)
+                        {
+                            case false:
+                                isOccupied = true;
+                                object2 = other.gameObject;
+                                object2.transform.parent = cookPoint.transform;
+                                object2.transform.position = cookPoint.transform.position;
+                                object2.transform.rotation = cookPoint.transform.rotation;
+                                object2.GetComponent<Rigidbody>().isKinematic = true;
+                                object2.GetComponent<XRGrabInteractable>().enabled = false;
+                                StartCoroutine(FishCook(object2.GetComponent<MeshRenderer>()));
+                                break;
+                        }
                         break;
                 }
                 break;
@@ -97,5 +104,6 @@ public class CampfireSystem : MonoBehaviour
         object2.GetComponent<Rigidbody>().isKinematic = false;
         object2.tag = "FishCooked";
         object2.GetComponent<XRGrabInteractable>().enabled = true;
+        isOccupied = false;
     }
 }
